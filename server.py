@@ -1,4 +1,4 @@
-#server.py 
+# server.py
 
 from flask import Flask, request, jsonify
 import sqlite3
@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from logger_config import setup_logger
 
 # Configurar el logger
-logger = setup_logger('server', 'server.log')
+logger = setup_logger("server", "server.log")
 
 # Load environment variables
 load_dotenv()
@@ -17,10 +17,11 @@ load_dotenv()
 app = Flask(__name__)
 
 # Get secret key from environment variable
-SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 
 # Lista de tokens válidos (en producción esto debería estar en una base de datos o variable de entorno)
 # VALID_TOKENS = ["token_servicio1", "token_servicio2", "token_servicio3"]
+
 
 def valid_jwt(token):
     try:
@@ -33,6 +34,7 @@ def valid_jwt(token):
     except jwt.InvalidTokenError:
         logger.error("Token inválido")
         return None  # token inválido
+
 
 def init_db():
     with sqlite3.connect("logs.db") as conn:
@@ -62,7 +64,7 @@ def receive_logs():
     auth_header = request.headers.get("Authorization")
     if not validate_token(auth_header):
         return jsonify({"error": "¿Quién sos bro, tu no eres peter parker"}), 401
-    
+
     token = auth_header.split(" ")[1]
     payload = valid_jwt(token)
     if not payload:
@@ -135,8 +137,7 @@ def get_logs():
     except Exception as e:
         return jsonify({"error": f"Error al consultar los logs: {str(e)}"}), 500
 
+
 if __name__ == "__main__":
     init_db()  # Inicializar la base de datos
     app.run(debug=True, port=5000)
-
-

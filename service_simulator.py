@@ -1,23 +1,22 @@
-# service_simulator.py 
+# service_simulator.py
 
 import requests
 import random
 from datetime import datetime
 import time
-
-
-
-# Load environment variables
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
+from logger_config import setup_logger
+
+# Configurar el logger para este servicio
+logger = setup_logger('service_simulator', 'service1.log')
 
 load_dotenv()
 
 # Configuración del servicio
-SERVICE_NAME = os.getenv('SERVICE1_NAME')
-TOKEN = os.getenv('SERVICE1_TOKEN')
-SERVER_URL = os.getenv('SERVER_URL', 'http://localhost:5000/logs')
-
+SERVICE_NAME = os.getenv("SERVICE1_NAME")
+TOKEN = os.getenv("SERVICE1_TOKEN")
+SERVER_URL = os.getenv("SERVER_URL", "http://localhost:5000/logs")
 
 
 # Lista de mensajes de ejemplo para cada nivel de severidad
@@ -46,13 +45,14 @@ SAMPLE_MESSAGES = {
         "Error de validación en formulario",
         "Proceso interrumpido inesperadamente",
     ],
-    
 }
 
 
 def generate_log():
     """Genera un log aleatorio con datos realistas"""
-    severity = random.choices(["INFO", "DEBUG", "WARNING", "ERROR"], weights=[80,50,15,5], k=1)[0]
+    severity = random.choices(
+        ["INFO", "DEBUG", "WARNING", "ERROR"], weights=[80, 50, 15, 5], k=1
+    )[0]
     message = random.choice(SAMPLE_MESSAGES[severity])
 
     return {
@@ -72,7 +72,9 @@ def send_logs(logs):
         if response.status_code == 200:
             logger.info(f"Logs enviados exitosamente: {len(logs)} logs")
         else:
-            logger.error(f"Error al enviar logs: {response.status_code} - {response.text}")
+            logger.error(
+                f"Error al enviar logs: {response.status_code} - {response.text}"
+            )
     except Exception as e:
         logger.error(f"Error de conexión: {str(e)}")
 
