@@ -1,0 +1,15 @@
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+
+# Python
+.venv/
+
+# Logs
+*.log
+
+
+
+

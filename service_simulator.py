@@ -5,10 +5,20 @@ import random
 from datetime import datetime
 import time
 
+
+
+# Load environment variables
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 # Configuración del servicio
-SERVICE_NAME = "servicio1"  # Cambia esto para cada servicio
-TOKEN = "token_servicio1"  # Usa el token correspondiente al servicio
-SERVER_URL = "http://localhost:5000/logs"
+SERVICE_NAME = os.getenv('SERVICE1_NAME')
+TOKEN = os.getenv('SERVICE1_TOKEN')
+SERVER_URL = os.getenv('SERVER_URL', 'http://localhost:5000/logs')
+
+
 
 # Lista de mensajes de ejemplo para cada nivel de severidad
 SAMPLE_MESSAGES = {
@@ -46,7 +56,7 @@ def generate_log():
     message = random.choice(SAMPLE_MESSAGES[severity])
 
     return {
-        "timestamp": datetime.now().isoformat()[:-2],
+        "timestamp": datetime.now(datetime.UTC).isoformat(),
         "service": SERVICE_NAME,
         "severity": severity,
         "message": message,
@@ -55,16 +65,17 @@ def generate_log():
 
 def send_logs(logs):
     """Envía los logs al servidor central"""
-    headers = {"Authorization": f"Token {TOKEN}", "Content-Type": "application/json"}
+    headers = {"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"}
 
     try:
         response = requests.post(SERVER_URL, json=logs, headers=headers)
         if response.status_code == 200:
-            print(f"Logs enviados exitosamente: {len(logs)} logs")
+            logger.info(f"Logs enviados exitosamente: {len(logs)} logs")
         else:
-            print(f"Error al enviar logs: {response.status_code} - {response.text}")
+            logger.error(f"Error al enviar logs: {response.status_code} - {response.text}")
     except Exception as e:
-        print(f"Error de conexión: {str(e)}")
+        logger.error(f"Error de conexión: {str(e)}")
+
 
 def main():
     print(f"Iniciando servicio de logs: {SERVICE_NAME}")
@@ -79,8 +90,6 @@ def main():
         # Esperar entre 2 y 5 segundos antes de la siguiente generación
         wait_time = random.uniform(2, 5)
         time.sleep(wait_time)
-
-
 
 
 if __name__ == "__main__":
