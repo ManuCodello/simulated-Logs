@@ -2,7 +2,7 @@
 
 import requests
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 import time
 import os
 from dotenv import load_dotenv
@@ -93,7 +93,7 @@ def send_logs(logs):
         logger.error(f"Error de conexión: {str(e)}")
 
 def main():
-    logger.info("Iniciando servicio de Marketplace")
+    logger.info(f"Iniciando servicio de Marketplace")
     while True:
         # Generar entre 3 y 8 logs (más actividad que antes)
         num_logs = random.randint(3, 8)

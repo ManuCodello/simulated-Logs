@@ -2,7 +2,7 @@
 
 from flask import Flask, request, jsonify
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta, timezone      
 import jwt
 import os
 from dotenv import load_dotenv
@@ -88,7 +88,7 @@ def receive_logs():
                         log["service"],
                         log["severity"],
                         log["message"],
-                        datetime.now(datetime.UTC).isoformat(),
+                        datetime.now(timezone.utc).isoformat(),
                     ),
                 )
         return jsonify({"message": f"Se guardaron {len(logs)} logs correctamente"}), 200

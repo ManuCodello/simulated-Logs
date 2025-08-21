@@ -1,5 +1,6 @@
+from time import timezone
 import jwt
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 from dotenv import load_dotenv
 from pathlib import Path
@@ -9,7 +10,7 @@ def generate_token(service_name, secret_key, hours=24):
     """Genera un token JWT para un servicio específico"""
     payload = {
         "service": service_name,
-        "exp": datetime.now(datetime.UTC) + timedelta(hours=hours),
+        "exp": datetime.now(timezone.utc) + timedelta(hours=hours),
     }
     return jwt.encode(payload, secret_key, algorithm="HS256")
 

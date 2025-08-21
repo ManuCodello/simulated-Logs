@@ -2,7 +2,7 @@
 
 import requests
 import random
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import time
 import os
 from dotenv import load_dotenv
@@ -79,7 +79,7 @@ def generate_log():
     )
 
     return {
-        "timestamp": datetime.now(datetime.UTC).isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "service": SERVICE_NAME,
         "severity": severity,
         "message": message,
