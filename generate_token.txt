@@ -12,7 +12,7 @@ SERVICE_NAME = os.getenv("SERVICE1_NAME", "servicio1")
 
 payload = {
     "service": SERVICE_NAME,
-    "exp": datetime.utcnow() + timedelta(hours=2),  # expira en 2 horas
+    "exp": datetime.now(datetime.UTC) + timedelta(hours=2),  # expira en 2 horas
 }
 
 token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
