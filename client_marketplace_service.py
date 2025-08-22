@@ -2,7 +2,7 @@
 
 import requests
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 import time
 import os
 from dotenv import load_dotenv
