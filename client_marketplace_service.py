@@ -21,7 +21,7 @@ SERVER_URL = os.getenv("SERVER_URL", "http://localhost:5000/logs")
 
 # Datos de ejemplo para el marketplace
 PRODUCTS = ["Smartphone", "Laptop", "Headphones", "Smart TV", "Tablet", "Smartwatch"]
-ACTIONS = ["view", "add_to_cart", "purchase", "review", "wishlist"]
+# ACTIONS = ["view", "add_to_cart", "purchase", "review", "wishlist"]
 USERS = [f"user_{i}" for i in range(1, 1001)]  # Simular 1000 usuarios
 
 # Mensajes por nivel de severidad

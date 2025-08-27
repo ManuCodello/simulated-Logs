@@ -22,7 +22,7 @@ SERVER_URL = os.getenv("SERVER_URL", "http://localhost:5000/logs")
 # Datos de ejemplo para el messenger
 USERS = [f"user_{i}" for i in range(1, 1001)]
 CHAT_TYPES = ["personal", "grupo", "canal"]
-ACTIONS = ["mensaje", "multimedia", "reacción", "videollamada", "archivo"]
+# ACTIONS = ["mensaje", "multimedia", "reacción", "videollamada", "archivo"]
 FEATURES = ["texto", "imagen", "video", "audio", "documento", "sticker"]
 
 # Mensajes por nivel de severidad

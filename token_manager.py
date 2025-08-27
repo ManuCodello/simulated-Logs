@@ -1,6 +1,5 @@
 #token_manager.py
 
-
 from time import timezone
 import jwt
 from datetime import datetime, timedelta, timezone
@@ -29,7 +28,6 @@ def update_env_token(service_num, token):
                 temp_file.write(f'SERVICE{service_num}_TOKEN="{token}"\n')
             else:
                 temp_file.write(line)
-
     temp_path.replace(env_path)
 
 

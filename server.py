@@ -19,10 +19,6 @@ app = Flask(__name__)
 # Get secret key from environment variable
 SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 
-# Lista de tokens válidos (en producción esto debería estar en una base de datos o variable de entorno)
-# VALID_TOKENS = ["token_servicio1", "token_servicio2", "token_servicio3"]
-
-
 def valid_jwt(token):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
@@ -55,13 +51,13 @@ def validate_token(token):
     if not token or not token.startswith("Bearer "):
         return False, " Token no es valido"
     token = token.split(" ")[1]
-    return token
+    return True  
 
 
 @app.route("/logs", methods=["POST"])
 def receive_logs():
     # Verificar el token de autorización
-    auth_header = request.headers.get("Authorization")
+    auth_header = request.headers.get("Authorization")  
     if not validate_token(auth_header):
         return jsonify({"error": "¿Quién sos bro, tu no eres peter parker"}), 401
 
@@ -108,10 +104,10 @@ def get_logs():
     timestamp_end = request.args.get("timestamp_end")
     received_at_start = request.args.get("received_at_start")
     received_at_end = request.args.get("received_at_end")
+    severity =  request.args.get("severity")
 
     query = "SELECT * FROM logs WHERE 1=1"
     params = []
-
     if timestamp_start:
         query += " AND timestamp >= ?"
         params.append(timestamp_start)
@@ -124,6 +120,9 @@ def get_logs():
     if received_at_end:
         query += " AND received_at <= ?"
         params.append(received_at_end)
+    if severity:
+        query += " AND LOWER(severity) = LOWER(?)"
+        params.append(severity)
 
     query += " ORDER BY timestamp DESC"
 
@@ -137,6 +136,8 @@ def get_logs():
     except Exception as e:
         return jsonify({"error": f"Error al consultar los logs: {str(e)}"}), 500
 
+
+#http://127.0.0.1:5000/logs?timestamp_start=2025-01-15T10:00:00Z
 
 if __name__ == "__main__":
     init_db()  # Inicializar la base de datos

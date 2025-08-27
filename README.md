@@ -102,3 +102,11 @@ curl http://localhost:5000/logs \
   --data-urlencode "timestamp_start=2023-08-18T00:00:00" \
   --data-urlencode "timestamp_end=2023-08-18T23:59:59"
 ```
+{
+    "timestamp": "2025-08-27T13:00:00Z",
+    "service": "servicio1",
+    "severity": "INFO",
+    "message": "Usuario testeando POST desde Postman"
+}
+
+Content-Type: application/json
