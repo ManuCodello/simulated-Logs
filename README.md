@@ -3,114 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>simulated-Logs</title>
+  <title>simulated-Logs | Log Simulation & Analysis</title>
   <style>
-    body { font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 20px; }
-    header { text-align: center; padding: 40px 0; }
-    h1 { margin: 0; font-size: 2.5em; color: #2c3e50; }
-    .badges img { margin: 0 6px; vertical-align: middle; }
-    .content { max-width: 900px; margin: auto; background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 0 12px rgba(0,0,0,0.06); }
-    h2 { color: #34495e; margin-top: 40px; }
-    pre { background: #272c30; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; }
-    code { font-family: Consolas, ‘Courier New’, monospace; color: #f8f8f2; }
-    ul { list-style-type: square; }
-    footer { text-align: center; font-size: 0.9em; color: #888; margin-top: 60px; }
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #f3f5f7 0%, #ffffff 100%);
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight: 700;
+    }
+    h1 span {
+      color: #4dd0e1;
+    }
+    .subtitle {
+      font-size: 1.2em;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+    .badges {
+      margin-top: 25px;
+    }
+    .badges img {
+      margin: 5px;
+      height: 28px;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 40px;
+      animation: fadeIn 0.8s ease;
+    }
+    h2 {
+      border-left: 6px solid #4dd0e1;
+      padding-left: 10px;
+      color: #2c3e50;
+      margin-top: 45px;
+      font-size: 1.6em;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.95em;
+    }
+    code {
+      font-family: Consolas, 'Courier New', monospace;
+    }
+    ul {
+      line-height: 1.8;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #555;
+      font-size: 0.9em;
+      background-color: #f4f6f8;
+      margin-top: 60px;
+    }
+    footer strong {
+      color: #000;
+    }
+    a {
+      color: #4dd0e1;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>📄 simulated-Logs</h1>
-    <p><strong>Log Simulation & Analysis Tool</strong></p>
+    <h1>📄 <span>simulated-Logs</span></h1>
+    <p class="subtitle"><strong>Log Simulation & Analysis Tool</strong></p>
     <div class="badges">
-      <img src="https://img.shields.io/badge/Language-Python-3670a0?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-      <img src="https://img.shields.io/badge/Module-logging%20&%20simulation-orange?style=for-the-badge" alt="Logging & Simulation">
-      <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
+      <img src="https://img.shields.io/badge/Language-Python-3670a0?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge">
+      <img src="https://img.shields.io/badge/Module-logging%20&%20simulation-orange?style=for-the-badge" alt="Module Badge">
+      <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License Badge">
     </div>
   </header>
 
-  <div class="content">
+  <main>
+    <section>
+      <h2>📘 Overview</h2>
+      <p>
+        <strong>simulated-Logs</strong> is a complete Python project designed to
+        <strong>generate, simulate, and analyze log data automatically</strong>.  
+        Ideal for developers, data engineers, and DevOps professionals who need
+        realistic logs for testing pipelines, monitoring, and machine learning experiments.
+      </p>
+    </section>
 
-    <h2>📘 Overview</h2>
-    <p>
-      <strong>simulated-Logs</strong> is a comprehensive project designed to create, simulate, and analyze system logs automatically.  
-      It helps developers, analysts, and security-oriented engineers generate synthetic log data, handle log workflows, and feed it into downstream systems—ideal for testing, monitoring, or training.
-    </p>
+    <section>
+      <h2>🧰 Key Features</h2>
+      <ul>
+        <li>🕵️ Generate realistic log entries with timestamps, identifiers, and severity levels (<code>INFO</code>, <code>WARN</code>, <code>ERROR</code>).</li>
+        <li>🔄 Simulate live log streams to files or network targets.</li>
+        <li>📊 Analyze log data and produce reports (counts, errors, frequencies).</li>
+        <li>⚙️ Modular design — independent generator, simulator, and analyzer modules.</li>
+        <li>💡 Fully customizable output format, rate, and structure.</li>
+      </ul>
+    </section>
 
-    <h2>🧰 Key Features</h2>
-    <ul>
-      <li>🕵️ Generate realistic synthetic log entries with timestamps, identifiers, levels (INFO/WARN/ERROR).</li>
-      <li>🔄 Simulate log streams for applications, servers or services (e.g., saving to files, sending over channels).</li>
-      <li>📊 Analyze log output: count levels, detect patterns, prepare for ingestion.</li>
-      <li>⚙️ Modular code architecture: separate generation, simulation, and analytics components.</li>
-      <li>💡 Easily customizable: choose formats, volumes, simulation rate, output channels.</li>
-    </ul>
-
-    <h2>📁 Project Structure</h2>
-    <pre><code>simulated-Logs/
-├── generator.py             # Core logic to build synthetic log entries  
-├── simulator.py             # Engine to feed logs into files or streams  
-├── analyzer.py              # Processes logs, compiles stats and reports  
-├── configs/                 # Configuration files for formats/rate/output  
-├── requirements.txt         # Python dependencies  
-└── README.html              # This document  
+    <section>
+      <h2>📁 Project Structure</h2>
+      <pre><code>simulated-Logs/
+├── generator.py             # Builds structured synthetic log entries
+├── simulator.py             # Emits log entries at a configurable rate
+├── analyzer.py              # Parses logs and computes statistics
+├── configs/                 # JSON configuration files
+├── requirements.txt         # Dependencies list
+└── README.html              # Project documentation
 </code></pre>
+    </section>
 
-    <h2>⚙️ Setup & Usage</h2>
-    <h3>Installation</h3>
-    <pre><code>git clone https://github.com/ManuCodello/simulated-Logs.git
+    <section>
+      <h2>⚙️ Setup & Usage</h2>
+      <h3>Installation</h3>
+      <pre><code>git clone https://github.com/ManuCodello/simulated-Logs.git
 cd simulated-Logs
 pip install -r requirements.txt
 </code></pre>
 
-    <h3>Running Log Generation</h3>
-    <pre><code>python generator.py --config configs/logconfig.json
+      <h3>Generate Logs</h3>
+      <pre><code>python generator.py --config configs/logconfig.json
 </code></pre>
 
-    <h3>Running Simulation</h3>
-    <pre><code>python simulator.py --rate 100 --output logs/output.log
+      <h3>Simulate Logs</h3>
+      <pre><code>python simulator.py --rate 100 --output logs/output.log
 </code></pre>
 
-    <h3>Analysis & Reporting</h3>
-    <pre><code>python analyzer.py --input logs/output.log --report reports/summary.csv
+      <h3>Analyze Logs</h3>
+      <pre><code>python analyzer.py --input logs/output.log --report reports/summary.csv
 </code></pre>
+    </section>
 
-    <h2>🧠 How It Works</h2>
-    <p>
-      1. <strong>generator.py</strong> builds structured log entries (timestamp, level, service, message) based on patterns.  
-      2. <strong>simulator.py</strong> emits these entries at configurable rates, either into files or streaming targets.  
-      3. <strong>analyzer.py</strong> ingests log files, parses entries, and computes useful metrics (counts per level, rate over time, error spikes).  
-    </p>
+    <section>
+      <h2>🧠 How It Works</h2>
+      <ol>
+        <li><strong>generator.py</strong> → builds synthetic logs with metadata.</li>
+        <li><strong>simulator.py</strong> → streams logs in real-time or writes them to a file.</li>
+        <li><strong>analyzer.py</strong> → processes logs, computes stats, detects spikes or errors.</li>
+      </ol>
+    </section>
 
-    <h2>📊 Highlights & Use Cases</h2>
-    <p>
-      - Useful for <strong>load testing</strong> logging pipelines.  
-      - Great for training DevOps/SME teams in parsing and monitoring log data.  
-      - Helps build <strong>SIEM test datasets</strong> or verify alerting rules.  
-    </p>
+    <section>
+      <h2>📊 Example Use Cases</h2>
+      <ul>
+        <li>Testing and benchmarking **log ingestion pipelines**.</li>
+        <li>Creating **synthetic datasets** for SIEM or anomaly detection models.</li>
+        <li>Teaching **data engineering** or **DevOps** monitoring workflows.</li>
+      </ul>
+    </section>
 
-    <h2>🧾 Future Enhancements</h2>
-    <ul>
-      <li>Integrate real-time streaming into Kafka or AWS Kinesis.</li>
-      <li>Support large-scale log volumes and distributed simulation clusters.</li>
-      <li>Advanced analytics: anomaly detection, log correlation and visualization dashboards.</li>
-      <li>Add UI web interface for simulation control and monitoring.</li>
-    </ul>
+    <section>
+      <h2>🚀 Future Enhancements</h2>
+      <ul>
+        <li>Integration with **Kafka**, **AWS Kinesis**, or WebSocket streaming.</li>
+        <li>Support for **distributed simulation clusters**.</li>
+        <li>Advanced analytics dashboards (e.g., Grafana or Streamlit).</li>
+        <li>Web interface to control and visualize simulations.</li>
+      </ul>
+    </section>
 
-    <h2>👤 Author</h2>
-    <p>
-      <strong>Manu Codello</strong> — Computer Science Student, Universidad Nacional de Asunción<br>
-      Focused on automation, data engineering, and developer tools.
-    </p>
+    <section>
+      <h2>👤 Author</h2>
+      <p>
+        <strong>Manu Codello</strong> — Computer Science Student at Universidad Nacional de Asunción.<br>
+        Passionate about automation, data systems, and intelligent developer tools.
+      </p>
+    </section>
 
-    <h2>📜 License</h2>
-    <p>This project is released under the <strong>MIT License</strong>. You are free to use, modify, and distribute with attribution.</p>
-
-  </div>
+    <section>
+      <h2>📜 License</h2>
+      <p>This project is released under the <strong>MIT License</strong>.  
+      Feel free to use, modify, and share with proper credit.</p>
+    </section>
+  </main>
 
   <footer>
-    © 2025 Manu Codello
+    © 2025 <strong>Manu Codello</strong> — Crafted with precision, curiosity, and a love for clean code. ⚡
   </footer>
 
 </body>
 </html>
+
+</html>
+
